@@ -4,9 +4,9 @@
 
 Oni Slayer is a one-player game that has a mix of functionality between Plant vs. Zombies and the classic arcade game, Alien Invasion.
 
-Similar to the Alien Invasion game, you have control of where to fire your weapon at the Aliens, or in our case the Onis.
+Similar to Alien Invasion, you have control of where to fire your weapon at the Aliens, or in our case the Onis.
 
-At some point the difficulty level will go up where the Onis will approach to the village faster and, similar to Plant vs. Zombies, it will take more than one hit for the Onis to be exterminated.
+At some point the difficulty level will go up where the Onis will approach the village faster and, similar to Plant vs. Zombies, it will take more than one hit for the Onis to be exterminated.
 
 You will have three life points, each life points indicating how many Onis went past you and in to the village. If you lose all three life points, you lose.
 
@@ -14,7 +14,7 @@ To win, you will have to get past 3 levels and once you've defeated all the Onis
 
 ## **Functionality & MVPs**
 
-In Oni Salyer, users will be able to:
+In Oni Slayer, users will be able to:
 * Start, pause and reset the game board
 * Navigate your character with the up and down key
 * Use space bar to fire your Wind Scar at the Onis
@@ -24,7 +24,7 @@ In addition, this project will include:
 
 
 ## **Wireframes**
-
+<img src="https://github.com/WinnieNg3210/JS_Project/blob/main/Game_Wireframe.png?raw=true" style="height: 300px; width:500px;">
 
 ## **Technologies, Libraries, APIs**
 
