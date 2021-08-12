@@ -24,7 +24,13 @@ In addition, this project will include:
 
 
 ## **Wireframes**
-<img src="https://github.com/WinnieNg3210/JS_Project/blob/main/Game_Wireframe.png?raw=true" style="height: 300px; width:500px;">
+<img src="https://github.com/WinnieNg3210/JS_Project/blob/main/WireFrame.png?raw=true" style="height: 300px; width:500px;">
+
+* Nav links include links to this project's Github repo, my LinkedIn, (and in
+the future, my own website)
+* How-to-play will display a pop up modal that shows the instruction of the game
+* Game controls will allow the user to start, pause and reset the game
+
 
 ## **Technologies, Libraries, APIs**
 
