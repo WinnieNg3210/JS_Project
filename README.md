@@ -6,7 +6,7 @@ Oni Slayer is a one-player game that has a mix of functionality between Plant vs
 
 Similar to Alien Invasion, you have control of where to fire your weapon at the Aliens, or in our case the Onis.
 
-At some point the difficulty level will go up where the Onis will approach the village faster and, similar to Plant vs. Zombies, it will take more than one hit for the Onis to be exterminated.
+At some point the difficulty level will go up where the Onis will approach you much faster and, similar to Plant vs. Zombies, it will take more than one hit for the Onis to be exterminated.
 
 You will have three life points, each life points indicating how many Onis went past you and in to the village. If you lose all three life points, you lose.
 
