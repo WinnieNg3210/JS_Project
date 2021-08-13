@@ -38,6 +38,7 @@ This project will be implemented with the following technologies:
 * The Canvas API to render the game board
 * Webpack and Babel to bundle and transpile the source JavaScript code
 * npm to manage project dependencies
+* HTML, CSS, JavaScript
 
 ## **Implementation Timeline**
 
