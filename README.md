@@ -17,10 +17,10 @@ To win, you will have to get past 3 levels and once you've defeated all the Onis
 In Oni Slayer, users will be able to:
 * Start, pause and reset the game board
 * Navigate your character with the up and down key
-* Use space bar to fire your Wind Scar at the Onis
+* Use space bar to fire your weapon at the Onis
 
 In addition, this project will include:
-* An About modal describing the background and rules of the game
+* An ABOUT modal describing the background and rules of the game
 
 
 ## **Wireframes**
