@@ -1,23 +1,23 @@
-# **Oni Slayer**
+# **Defender of Beauty & Justice**
 
 ## **Background**
 
-Oni Slayer is a one-player game that has a mix of functionality between Plant vs. Zombies and the classic arcade game, Alien Invasion.
+Defender of Beauty & Justice(DBJ) is a one-player game that has a mix of functionality between Plant vs. Zombies and the classic arcade game, Alien Invasion.
 
-Similar to Alien Invasion, you have control of where to fire your weapon at the Aliens, or in our case the Onis.
+Similar to Alien Invasion, you have control of where to fire your weapon at the Aliens, or in our case the enemies.
 
-At some point the difficulty level will go up where the Onis will approach you much faster and, similar to Plant vs. Zombies, it will take more than one hit for the Onis to be exterminated.
+At some point the difficulty level will go up where the enemies will approach you much faster and, similar to Plant vs. Zombies, it will take more than one hit for the enemies to be exterminated.
 
-You will have three life points, each life points indicating how many Onis went past you and in to the village. If you lose all three life points, you lose.
+You will have three life points, each life points indicating how many enemies went past you and in to the village. If you lose all three life points, you lose.
 
-To win, you will have to get past 3 levels and once you've defeated all the Onis you win.
+To win, you will have to get past 3 levels and once you've defeated all the enemies you win.
 
 ## **Functionality & MVPs**
 
-In Oni Slayer, users will be able to:
+In DBJ, users will be able to:
 * Start, pause and reset the game board
 * Navigate your character with the up and down key
-* Use space bar to fire your weapon at the Onis
+* Use space bar to fire your weapon at the enemies
 
 In addition, this project will include:
 * An ABOUT modal describing the background and rules of the game
@@ -64,5 +64,5 @@ nav links.
 There are many directions this game can go. Some anticipated updates are:
 * Pick a character to exterminate the demons besides Inuyasha
 * Add a medium and hard difficulty level
-* Having the Onis move in up and down directions aside from moving to the left
+* Having the enemies move in up and down directions aside from moving to the left
 
