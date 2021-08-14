@@ -10,12 +10,11 @@ export default class Hero {
         this.height = 48;
         this.frameX = 0;
         this.frameY = 0;
-        this.speed = 8;
+        this.speed = 4;
         this.moving = false;
         this.heroSprite = new Image();
         this.heroSprite.src = "./src/images/sailormoon.png"
-        // this.addEventListener("keydown", this);
-        // this.addEventListener("keyup", this);
+        this.keys = [];
     };
 
     drawHero(ctx) {
@@ -27,18 +26,27 @@ export default class Hero {
     animate(ctx) {
         this.drawHero(ctx);
         // this.moveHero();
+        
     };
 
+    keyDown(e) {
+        this.keys[e.key] = true;
+        console.log(this.keys);
+        this.moving = true;
+    }
 
+    keyUp(e) {
+        delete this.keys[e.key];
+        // console.log("up");
+        this.frameY = 2;
+        this.moving = false;
+    };
 
-    // handleEvent(e) {
-    //     switch(e.key) {
-    //         case "keydown":
-    //             this.keyDownEvent(e)
-    //             break;
-    //         case "keyup"
-    //     }
-    // }
+    handleFrame() {
+        if (this.frameX < 3 && this.moving) this.frameX++;
+        else this.frameX = 0;
+    }
+
 
     
 }
