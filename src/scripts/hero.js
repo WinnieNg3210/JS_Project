@@ -15,24 +15,27 @@ export default class Hero {
         this.heroSprite = new Image();
         this.heroSprite.src = "./src/images/sailormoon.png"
         this.keys = [];
+        this.attack = false;
     };
 
-    drawHero(ctx) {
+    draw(ctx) {
         ctx.drawImage(this.heroSprite, this.width * this.frameX, 
             this.height * this.frameY, this.width, this.height, 
             this.x, this.y, this.width, this.height);
     };
 
     animate(ctx) {
-        this.drawHero(ctx);
+        this.draw(ctx);
         // this.moveHero();
         
     };
 
     keyDown(e) {
-        this.keys[e.key] = true;
-        console.log(this.keys);
-        this.moving = true;
+        if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+            this.keys[e.key] = true;
+            this.moving = true;
+        }
+        // console.log(`this is spacebar: ${e.key}`);
     }
 
     keyUp(e) {
@@ -46,7 +49,6 @@ export default class Hero {
         if (this.frameX < 3 && this.moving) this.frameX++;
         else this.frameX = 0;
     }
-
 
     
 }
