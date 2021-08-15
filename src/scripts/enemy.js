@@ -23,9 +23,9 @@ export default class Enemy {
             this.width, this.height, this.x, this.y, this.width, this.height);
     }
 
-    animate(ctx) {
-        this.draw(ctx);
-    }
+    // animate(ctx) {
+    //     this.draw(ctx);
+    // }
 
     update() { // update
         this.x -= this.speed;

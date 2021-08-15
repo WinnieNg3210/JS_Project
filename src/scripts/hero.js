@@ -1,4 +1,4 @@
-
+import Attack from "./attack";
 
 export default class Hero {
     constructor(dimension) {
@@ -15,6 +15,7 @@ export default class Hero {
         this.heroSprite = new Image();
         this.heroSprite.src = "./src/images/sailormoon.png"
         this.keys = [];
+        // this.spaceBar = [];
         this.attack = false;
     };
 
@@ -26,24 +27,51 @@ export default class Hero {
 
     animate(ctx) {
         this.draw(ctx);
-        // this.moveHero();
-        
     };
+
+    keyCount(ele) {
+        let counter = 0;
+        for (let i = 0; i < this.keys.length; i++) {
+            if (this.keys[i] === ele) counter += 1;
+        };
+
+        return counter;
+    }
 
     keyDown(e) {
         if (e.key === "ArrowUp" || e.key === "ArrowDown") {
             this.keys[e.key] = true;
             this.moving = true;
         }
-        // console.log(`this is spacebar: ${e.key}`);
+        if (e.key === " ") {
+            this.keys[e.key] = true;
+            this.attack = true;
+        }
     }
 
     keyUp(e) {
         delete this.keys[e.key];
-        // console.log("up");
         this.frameY = 2;
         this.moving = false;
+        this.attack = false;
     };
+
+    // fireDown(e) {
+    //     if (e.code === "Space") {
+    //       this.spaceBar[e.key] = true;
+    //     //   let projectile = new Attack();
+    //     //   projectile.update();
+    //     //   projectile.draw();
+    //       this.attack = true;
+    //     };
+    //     // console.log("spaceBar");
+    // };
+
+    // fireUp(e) {
+    //     delete this.spaceBar[e.key];
+    //     this.attack = false;
+    // }
+
 
     handleFrame() {
         if (this.frameX < 3 && this.moving) this.frameX++;
