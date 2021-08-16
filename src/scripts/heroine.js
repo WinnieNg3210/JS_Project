@@ -1,6 +1,6 @@
-import Attack from "./attack";
+// import Attack from "./attack";
 
-export default class Hero {
+export default class Heroine {
     constructor(dimension) {
         // this.ctx = ctx;
         this.dimension = dimension; 
@@ -12,15 +12,19 @@ export default class Hero {
         this.frameY = 0;
         this.speed = 4;
         this.moving = false;
-        this.heroSprite = new Image();
-        this.heroSprite.src = "./src/images/sailormoon.png"
+        this.heroineSprite = new Image();
+        this.heroineSprite.src = "./src/images/sailormoon.png"
         this.keys = [];
         // this.spaceBar = [];
         this.attack = false;
+
+        // might have to put attack here;
+        // this.oneAttack = [];
+        // this.shoot = true;
     };
 
     draw(ctx) {
-        ctx.drawImage(this.heroSprite, this.width * this.frameX, 
+        ctx.drawImage(this.heroineSprite, this.width * this.frameX, 
             this.height * this.frameY, this.width, this.height, 
             this.x, this.y, this.width, this.height);
     };
@@ -46,7 +50,8 @@ export default class Hero {
         if (e.key === " ") {
             this.keys[e.key] = true;
             this.attack = true;
-        }
+            
+        };
     }
 
     keyUp(e) {
@@ -55,24 +60,7 @@ export default class Hero {
         this.moving = false;
         this.attack = false;
     };
-
-    // fireDown(e) {
-    //     if (e.code === "Space") {
-    //       this.spaceBar[e.key] = true;
-    //     //   let projectile = new Attack();
-    //     //   projectile.update();
-    //     //   projectile.draw();
-    //       this.attack = true;
-    //     };
-    //     // console.log("spaceBar");
-    // };
-
-    // fireUp(e) {
-    //     delete this.spaceBar[e.key];
-    //     this.attack = false;
-    // }
-
-
+    
     handleFrame() {
         if (this.frameX < 3 && this.moving) this.frameX++;
         else this.frameX = 0;

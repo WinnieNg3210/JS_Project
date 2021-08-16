@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":"AAAA,YACI,kBACA,QACA,SACA,gCACA,YACA,aACA,mB","sources":["webpack://Winnie_Ng_JS/./src/index.scss"],"sourcesContent":["#gameCanvas {\n    position: absolute;\n    top: 60%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 800px;\n    height: 500px;\n    background: rgb(44, 44, 138);\n};"],"names":[],"sourceRoot":""}
