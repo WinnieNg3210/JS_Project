@@ -9,6 +9,7 @@ export default class Game {
         this.ctx = canvas.getContext("2d");
         this.dimensions = {width: canvas.width, height: canvas.height};
         this.player = new Heroine(this.dimensions);
+
         this.score = 0;
         this.enemies = [];
         this.enemiesInterval = 150;
@@ -18,23 +19,19 @@ export default class Game {
         this.maxBullet = 8;
         this.level2 = 200;
         this.level3 = 400;
-        // this.fire = false;
         this.health = 3;
         this.frameInterval = 0;
-        
-        // this.play();
-        
         this.boss = [];
         this.finalBoss = false;
         this.showBoss = 1;
-        this.bossKill = 1;
+        this.bossKill = 2;
         this.minionsKilled = 0;
 
         // will be used to handle the start and stop function
-        // this.gameStart = false;
+        this.gameStart = false;
 
         this.handleEvents();
-        this.restart();
+        this.start();
 
     };
 
@@ -42,7 +39,7 @@ export default class Game {
     //     if (this.gameStart) this.animate();
     // }
 
-    restart() {
+    start() {
         this.player = new Heroine(this.dimensions);
         this.score = 0;
         this.animate();
@@ -51,10 +48,22 @@ export default class Game {
     handleEvents() {
         window.addEventListener("keydown", this.eventDown.bind(this));
         window.addEventListener("keyup", this.eventUp.bind(this));
-        
-        
+        window.addEventListener("keypress", this.startGame.bind(this));
+        // window.addEventListener("keypress", this.pauseGame.bind(this));
+    }
+ 
+    startGame(e) {
+        if (e.key === "Enter" && !this.gameStart) {
+            this.gameStart = true;
+            this.start();
+        }
     }
 
+    // pauseGame(e) {
+    //     if(e.key === "Shift") {
+    //         console.log("pressed");
+    //     };
+    // }
  
 
     // trying:
@@ -146,7 +155,7 @@ export default class Game {
                 let addedScore = this.boss[i].maxHealth;
                 this.score += addedScore;
                 this.boss.splice(i, 1)
-                this.minionsKilled = 0;
+                
                 this.bossKill -= 1;
                 this.showBoss += 1;
                 i--;
@@ -156,6 +165,7 @@ export default class Game {
         if (this.showBoss === 1 && this.minionsKilled % 5 === 0) {
             let verticalPosition = Math.floor((Math.random() * 8) + 2) * 50;
             this.boss.push(new Boss(verticalPosition));
+            this.minionsKilled = 0;
             this.showBoss -= 1;
         };
 
@@ -217,12 +227,32 @@ export default class Game {
 
     }
 
+    win() {
+        this.ctx.fillStyle = "gold";
+        this.ctx.font = "90px Style Script";
+        this.ctx.fillText("YOU WIN!", 180, 220);
+        this.ctx.font = "45px Style Script";
+        this.ctx.fillText("Score: " + this.score, 330, 290); 
+    }
+
+    lose() {
+        this.ctx.fillStyle = "gold";
+        this.ctx.font = "90px Style Script";
+        this.ctx.fillText("YOU LOSE!", 180, 220);
+        this.ctx.font = "45px Style Script";
+        this.ctx.fillText("Score: " + this.score, 330, 290); 
+    }
+
+
     handleGameStatus() {
         if (this.bossKill <= 0 || this.health <= 0) {
             this.gameOver = true;
         };
-        if (this.gameOver) {
-            console.log("GAME OVER!");
+
+        if (this.gameOver && this.bossKill <= 0) {
+            this.win();
+        } else if (this.gameOver && this.health <= 0) {
+            this.lose();
         };
         this.ctx.fillStyle = "gold";
         this.ctx.font = "30px Style Script";
@@ -235,8 +265,8 @@ export default class Game {
         this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height);
         this.movePlayer();
         // this.handleHeroine();
-        // this.handleBoss();
-        this.handleEnemies();
+        
+        // this.handleEnemies();
         
         this.handleLevels();
         this.handleAttacks();
@@ -245,7 +275,7 @@ export default class Game {
         this.player.animate(this.ctx);
         this.frameInterval++;
         if (this.finalBoss && this.boss) this.handleBoss();
-        if(!this.gameOver) requestAnimationFrame(this.animate.bind(this));
+        if(!this.gameOver && this.gameStart) requestAnimationFrame(this.animate.bind(this));
         
     };
 

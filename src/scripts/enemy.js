@@ -8,7 +8,7 @@ export default class Enemy {
         this.height = 48;
         this.frameX = 0;
         this.frameY = 1;
-        this.speed = 1;
+        this.speed = 5;
         this.minionSprite = new Image();
         this.minions = ["minion1", "minion2"];
         this.imageSrc = this.minions[Math.floor(Math.random() * this.minions.length)];
@@ -28,7 +28,6 @@ export default class Enemy {
     }
 
     update(frame) {
-        //this.y -= this.speed
         this.x -= this.speed;
         if (frame%10 === 0) {
             if (this.frameX < 3) this.frameX++;
