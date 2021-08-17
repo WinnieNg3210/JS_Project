@@ -60,8 +60,11 @@ table {
 }
 
 body {
-  background: url(61297d319ec98c5cc332.jpg);
-  background-size: 100%;
+  background: url(61297d319ec98c5cc332.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   text-align: center;
   margin-top: 2em;
   width: 100%;
@@ -130,7 +133,7 @@ a {
   color: white;
 }
 
-.credit a {
+.credit a, .social a {
   padding: 0.5em 1em;
 }
 

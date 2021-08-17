@@ -8,7 +8,7 @@ export default class Boss {
         this.height = 48;
         this.frameX = 0;
         this.frameY = 1;
-        this.speed = 1.5;
+        this.speed = 2;
         this.lifePoints = 600;
         this.maxHealth = this.lifePoints;
 

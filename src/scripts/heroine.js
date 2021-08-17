@@ -1,11 +1,11 @@
 // import Attack from "./attack";
 
 export default class Heroine {
-    constructor(dimension) {
+    constructor(dimension, y = 200) {
         // this.ctx = ctx;
         this.dimension = dimension; 
         this.x = 150;
-        this.y = 200;
+        this.y = y;
         this.width = 32;
         this.height = 48;
         this.frameX = 0;

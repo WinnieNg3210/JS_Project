@@ -50,8 +50,12 @@ table {
 }
 
 body {
-  background: url("/src/images/sailorBG.jpg");
-  background-size: 100%;
+  background: url("/src/images/sailorBG.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+//   background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
   margin-top: 2em;
   width: 100%;
@@ -125,10 +129,9 @@ a {
     color: white;
 }
 
-.credit a {
+.credit a, .social a {
     padding: .5em 1em;
 }
-
 
 footer {
     padding-top: 60vh;

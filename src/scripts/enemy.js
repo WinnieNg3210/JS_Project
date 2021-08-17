@@ -8,7 +8,7 @@ export default class Enemy {
         this.height = 48;
         this.frameX = 0;
         this.frameY = 1;
-        this.speed = 5;
+        this.speed = 1.5;
         this.minionSprite = new Image();
         this.minions = ["minion1", "minion2"];
         this.imageSrc = this.minions[Math.floor(Math.random() * this.minions.length)];
