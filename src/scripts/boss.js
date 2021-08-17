@@ -1,6 +1,4 @@
 export default class Boss {
-    // constructor(x, health, imageSrc, verticalPosition) { //(??? might not need verticalPosition in param)
-    
     constructor(verticalPosition) {
         this.x = 800; 
         this.y = verticalPosition;

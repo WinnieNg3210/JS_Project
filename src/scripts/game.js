@@ -8,11 +8,11 @@ export default class Game {
     constructor(canvas){
         this.ctx = canvas.getContext("2d");
         this.dimensions = {width: canvas.width, height: canvas.height};
-        // this.player = new Heroine(this.dimensions);
+        this.player = new Heroine(this.dimensions);
 
         this.score = 0;
         this.enemies = [];
-        this.enemiesInterval = 150;
+        this.enemiesInterval = 100;
         this.gameOver = false;
         this.totalAttacks = [];
         this.attackInterval = 1;
@@ -21,7 +21,6 @@ export default class Game {
         this.level2 = 200;
         this.level3 = 500;
         this.finalLevel = 800;
-        this.health = 3;
         this.frameInterval = 0;
         this.boss = [];
         this.finalBoss = false;
@@ -31,7 +30,7 @@ export default class Game {
         this.bossSpawn = 5;
 
         this.player = new Heroine(this.dimensions)
-        // this.playerPos = this.player.y;
+        this.health = 3;
 
         // will be used to handle the start and stop function
         this.gameStart = false;
@@ -39,7 +38,7 @@ export default class Game {
         // this.pause = false;
 
         this.handleEvents();
-        this.restart()
+        this.play();
         
     };
 
@@ -50,19 +49,18 @@ export default class Game {
     restart() {
         this.score = 0;
         this.enemies = [];
-        this.enemiesInterval = 150;
+        this.enemiesInterval = 100;
         this.gameOver = false;
         this.totalAttacks = [];
-        // this.health = 3;
         this.boss = [];
         this.finalBoss = false;
         this.showBoss = 1;
         this.bossKill = 2;
         this.minionsKilled = 0;
-        this.player = new Heroine(this.dimensions)
+        this.player = new Heroine(this.dimensions);
+        this.health = 3;
         this.animate();
-
-
+        
     };
 
     handleEvents() {
@@ -105,7 +103,6 @@ export default class Game {
             if (!this.gameStart && this.frameInterval > 1) {
                 this.gameStart = true;
                 this.restart();
-                
             };
         };
     };
@@ -152,6 +149,7 @@ export default class Game {
         for (let i = 0; i < this.enemies.length; i++) {
             this.enemies[i].update(this.frameInterval);
             this.enemies[i].draw(this.ctx);
+            // console.log(this.enemies[i].x)
 
             if (this.enemies[i].lifePoints <= 0) {
                 let addedScore = this.enemies[i].maxHealth;
@@ -306,18 +304,16 @@ export default class Game {
     animate() {
         this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height);
         this.movePlayer();
-        this.frameInterval++;
-        
         this.pauseGame();
         this.handleEnemies();
         this.handleLevels();
         this.handleAttacks();
         this.player.handleFrame();
         this.player.animate(this.ctx);
-        
-        console.log(this.health);
         if (this.finalBoss && this.boss) this.handleBoss();
         this.handleGameStatus();
+        this.frameInterval++;
+        // console.log(this.frameInterval);
         if(!this.gameOver && this.gameStart) requestAnimationFrame(this.animate.bind(this));
         
     };
