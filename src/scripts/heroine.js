@@ -4,7 +4,7 @@ export default class Heroine {
     constructor(dimension) {
         // this.ctx = ctx;
         this.dimension = dimension; 
-        this.x = 100;
+        this.x = 150;
         this.y = 200;
         this.width = 32;
         this.height = 48;
@@ -50,7 +50,6 @@ export default class Heroine {
         if (e.key === " ") {
             this.keys[e.key] = true;
             this.attack = true;
-            
         };
     }
 
