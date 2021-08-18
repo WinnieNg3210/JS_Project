@@ -28,7 +28,8 @@ export default class Game {
         this.bossKill = 3;
         this.minionsKilled = 0;
         this.bossSpawn = 5;
-
+        // this.color = "pink";
+        // this.font = "35px Dancing Script";
         this.player = new Heroine(this.dimensions)
         this.health = 3;
 
@@ -47,21 +48,21 @@ export default class Game {
 
         this.handleEvents();
         this.play();
-        this.intro();
+        // this.intro();
         
     };
 
-    intro() {
-        if (this.frameInterval <= 1) {
-            this.ctx.fillStyle = "pink";
-            this.ctx.font = "35px Dancing Script";
-            // this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 85, 170);
-            // this.ctx.fillText("This time the evil Queen will be taking actions", 100, 220);
-            // this.ctx.fillText("and she has set her sight on Tokyo! Help our heroine", 80, 270);
-            // this.ctx.fillText("defeat her once and for all.", 230, 320);
-            this.ctx.fillText("Press Enter to Play", 270, 250);
-        }
-    }
+    // intro() {
+    //     if (this.frameInterval <= 1) {
+    //         this.ctx.fillStyle = "pink";
+    //         this.ctx.font = "35px Dancing Script";
+    //         // this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 85, 170);
+    //         // this.ctx.fillText("This time the evil Queen will be taking actions", 100, 220);
+    //         // this.ctx.fillText("and she has set her sight on Tokyo! Help our heroine", 80, 270);
+    //         // this.ctx.fillText("defeat her once and for all.", 230, 320);
+    //         this.ctx.fillText("Press Enter to Play", 270, 250);
+    //     }
+    // }
 
     play() {
         this.animate()
@@ -316,6 +317,16 @@ export default class Game {
     // };
 
     handleGameStatus() {
+        if (this.frameInterval <= 1) {
+            this.ctx.fillStyle = "pink";
+            this.ctx.font = "35px Dancing Script";
+            this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 55, 170);
+            this.ctx.fillText("This time the evil Queen will be taking actions", 55, 220);
+            this.ctx.fillText("and she has set her sight on Tokyo! Help our", 55, 270);
+            this.ctx.fillText("heroine defeat her once and for all. Good Luck!", 55, 320);
+            this.ctx.fillText("Press Enter to Play", 55, 400);
+        }
+
         if (this.bossKill <= 0 || this.health <= 0) {
             this.gameOver = true;
         };
@@ -357,7 +368,7 @@ export default class Game {
 
     animate() {
         this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height);
-        this.intro();
+        // this.intro();
         this.movePlayer();
         this.pauseGame();
         this.handleEnemies();
