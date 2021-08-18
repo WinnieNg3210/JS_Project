@@ -27,6 +27,12 @@ const config = {
           },
           'sass-loader', // compiles sass to css
         ]
+      },
+      { test: /\.(woff|woff2|eot|ttf|otf)$/i, // allows me to convert ttf to wolf
+        type: "asset/resource",
+      },
+      { test: /\.(mp3)$/i,
+        type: 'asset/resource',
       }
     ],
   },

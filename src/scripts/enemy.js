@@ -8,7 +8,7 @@ export default class Enemy {
         this.height = 48;
         this.frameX = 0;
         this.frameY = 1;
-        this.speed = 1.5;
+        this.speed = 2; // for some reason enemy's x doesn't register sometimes in webpack
         this.minionSprite = new Image();
         this.minions = ["minion1", "minion2"];
         this.imageSrc = this.minions[Math.floor(Math.random() * this.minions.length)];
@@ -19,7 +19,6 @@ export default class Enemy {
         };
         this.maxHealth = this.lifePoints;
         this.minionSprite.src = `./src/images/${this.imageSrc}.png`;
-
     }
 
     draw(ctx) { // draw minions

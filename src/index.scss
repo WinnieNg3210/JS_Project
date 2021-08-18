@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+// @font-face {
+//     font-family: "sailormoon";
+//     src: url("./assets/Shardee.ttf");
+// }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -89,7 +94,7 @@ h2 {
     text-align: left;
     z-index: 7;
     background-color: rgb(211, 170, 199);
-    line-height: 1.5;
+    line-height: 2;
     color: aliceblue;
 }
 
@@ -135,4 +140,21 @@ a {
 
 footer {
     padding-top: 60vh;
+}
+
+.enemyBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 1em;
+}
+
+.enemies {
+    width: 32px;
+    height: 48px;
+    overflow: hidden;
+}
+
+.enemies img {
+    margin-top: -50px; 
 }

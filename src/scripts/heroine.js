@@ -1,5 +1,3 @@
-// import Attack from "./attack";
-
 export default class Heroine {
     constructor(dimension) {
         // this.ctx = ctx;
@@ -19,9 +17,8 @@ export default class Heroine {
         // this.spaceBar = [];
         this.attack = false;
 
-        // might have to put attack here;
-        // this.oneAttack = [];
-        // this.shoot = true;
+        
+
     };
 
     draw(ctx) {

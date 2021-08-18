@@ -17,10 +17,10 @@ export default class Game {
         this.totalAttacks = [];
         this.attackInterval = 1;
         this.maxBullet = 5;
-        this.level1 = 100;
-        this.level2 = 200;
-        this.level3 = 500;
-        this.finalLevel = 800;
+        this.level1 = 1000;
+        this.level2 = 2000;
+        this.level3 = 3000;
+        this.finalLevel = 4000;
         this.frameInterval = 0;
         this.boss = [];
         this.finalBoss = false;
@@ -35,12 +35,30 @@ export default class Game {
         // will be used to handle the start and stop function
         this.gameStart = false;
 
-        // this.pause = false;
+        // soundEffects:
+        this.attackSound = new Audio("src/sounds/attack.mp3");
+
+        this.winSound = new Audio("src/sounds/win.mp3");
+        // this.playWin = false;
+        // this.winAudio();
 
         this.handleEvents();
         this.play();
+        this.intro();
         
     };
+
+    intro() {
+        if (this.frameInterval === 1) {
+            this.ctx.fillStyle = "pink";
+            this.ctx.font = "35px Dancing Script";
+            this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 85, 170);
+            this.ctx.fillText("This time the evil Queen will be taking actions", 100, 220);
+            this.ctx.fillText("and she has set her sight on Tokyo! Help our heroine", 80, 270);
+            this.ctx.fillText("defeat her once and for all.", 230, 320);
+            this.ctx.fillText("Press Enter to Play", 270, 420);
+        }
+    }
 
     play() {
         this.animate()
@@ -79,6 +97,9 @@ export default class Game {
             } else if (!this.gameStart && this.frameInterval > 1) {
                 this.gameStart = true;
                 this.animate();
+            } else if (this.gameOver) {
+                this.restart();
+                // this.playWin = false;
             } else { //pause test
                 this.gameStart = false;
                 // this.pause = true;
@@ -89,9 +110,9 @@ export default class Game {
     pauseGame() {
         if (!this.gameStart && this.frameInterval > 1 && this.bossKill !== 0) {
             this.ctx.fillStyle = "gold";
-            this.ctx.font = "90px Style Script";
+            this.ctx.font = "90px Dancing Script";
             this.ctx.fillText("Pause!", 180, 220);
-            this.ctx.font = "45px Style Script";
+            this.ctx.font = "45px Dancing Script";
             this.ctx.fillText("Press Enter to Continue", 330, 290);
             this.ctx.fillText("Press R to Reset", 330, 350);
         };
@@ -161,10 +182,13 @@ export default class Game {
                 i--;
             };
             // how to potentially lose:
-            if (this.enemies[i] && this.enemies[i].x === 100) {
+            // if (this.enemies[i] && this.enemies[i].x === 100) {
+            //     this.health -= 1;
+            // };
+            if (this.enemies[i] && this.enemies[i].x < 10) {
+                this.enemies.splice(i, 1);
                 this.health -= 1;
             };
-
         }
 
         if (this.frameInterval % this.enemiesInterval === 0) {
@@ -238,7 +262,11 @@ export default class Game {
                         i--;
                     };
 
-                    if (this.boss[k] && this.boss[k].x === 100) {
+                    // if (this.boss[k] && this.boss[k].x === 100) {
+                    //     this.health -= 1;
+                    // };
+                    if (this.boss[k] && this.boss[k].x < 10) {
+                        this.boss.splice(i, 1);
                         this.health -= 1;
                     }
                 };
@@ -256,6 +284,7 @@ export default class Game {
             this.attackInterval -= 1;
             this.totalAttacks.push(new Attack(this.player.x + 30, this.player.y+20));
             this.maxBullet -= 1;
+            this.attackSound.cloneNode(true).play();
             if (this.attackInterval === 0) { 
                 let that = this;
                 setTimeout(function(){
@@ -266,22 +295,11 @@ export default class Game {
 
     }
 
-    win() {
-        this.ctx.fillStyle = "gold";
-        this.ctx.font = "90px Style Script";
-        this.ctx.fillText("YOU WIN!", 180, 220);
-        this.ctx.font = "45px Style Script";
-        this.ctx.fillText("Score: " + this.score, 330, 290); 
-    }
-
-    lose() {
-        this.ctx.fillStyle = "gold";
-        this.ctx.font = "90px Style Script";
-        this.ctx.fillText("YOU LOSE!", 180, 220);
-        this.ctx.font = "45px Style Script";
-        this.ctx.fillText("Score: " + this.score, 330, 290); 
-    }
-
+    // winAudio() {
+    //     if (this.playWin && this.gameOver) {
+    //         this.winSound.play();
+    //     };
+    // };
 
     handleGameStatus() {
         if (this.bossKill <= 0 || this.health <= 0) {
@@ -291,18 +309,42 @@ export default class Game {
         if (this.gameOver && this.bossKill <= 0) {
             this.win();
         } else if (this.gameOver && this.health <= 0) {
+            // this.playWin = true;
+            // this.winSound.play();
             this.lose();
         };
         
         this.ctx.fillStyle = "gold";
-        this.ctx.font = "30px Style Script";
+        this.ctx.font = "30px Dancing Script";
         this.ctx.fillText("Score: " + this.score, 20, 40);
         this.ctx.fillText("Life Left: " + this.health, 20, 80);
+        this.ctx.fillText("Attacks Left: " + this.maxBullet, 200, 80);
+    }
+
+    win() {
+        this.ctx.fillStyle = "gold";
+        this.ctx.font = "90px Dancing Script";
+        this.ctx.fillText("YOU WIN!", 180, 220);
+        this.ctx.font = "45px Dancing Script";
+        this.ctx.fillText("Score: " + this.score, 320, 290); 
+        this.ctx.font = "35px Dancing Script";
+        this.ctx.fillText("Press Enter to Play Again", 240, 380); 
+    }
+
+    lose() {
+        this.ctx.fillStyle = "gold";
+        this.ctx.font = "90px Dancing Script";
+        this.ctx.fillText("YOU LOSE!", 180, 220);
+        this.ctx.font = "45px Dancing Script";
+        this.ctx.fillText("Score: " + this.score, 320, 290); 
+        this.ctx.font = "35px Dancing Script";
+        this.ctx.fillText("Press Enter to Play Again", 240, 380); 
     }
 
 
     animate() {
         this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height);
+        this.intro();
         this.movePlayer();
         this.pauseGame();
         this.handleEnemies();
