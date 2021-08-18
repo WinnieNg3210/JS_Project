@@ -37,8 +37,11 @@ export default class Game {
 
         // soundEffects:
         this.attackSound = new Audio("src/sounds/attack.mp3");
+        // this.attackSound.volume = .2;
+        // this.soundOn = false;
 
-        this.winSound = new Audio("src/sounds/win.mp3");
+        this.winSound = new Audio("src/sounds/winS.mp3");
+        
         // this.playWin = false;
         // this.winAudio();
 
@@ -49,7 +52,13 @@ export default class Game {
     };
 
     intro() {
-        if (this.frameInterval === 1) {
+        if (this.frameInterval <= 1) {
+            this.ctx.fillStyle = "gold";
+            this.ctx.font = "30px Dancing Script";
+            this.ctx.fillText("Score: " + this.score, 20, 40);
+            this.ctx.fillText("Life Left: " + this.health, 20, 80);
+            this.ctx.fillText("Attacks Left: " + this.maxBullet, 200, 80);
+            
             this.ctx.fillStyle = "pink";
             this.ctx.font = "35px Dancing Script";
             this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 85, 170);
@@ -86,6 +95,7 @@ export default class Game {
         window.addEventListener("keyup", this.eventUp.bind(this));
         window.addEventListener("keypress", this.startGame.bind(this));
         window.addEventListener("keypress", this.resetGame.bind(this));
+        // window.addEventListener("keypress", this.soundStatus.bind(this));
     }
  
 
@@ -127,6 +137,14 @@ export default class Game {
             };
         };
     };
+
+    // soundStatus(e) {
+    //     if (e.key === "m") {
+    //         // if (this.soundOn) this.soundOn = false;
+    //         // this.soundOn = true;
+    //         console.log("press m");
+    //     };
+    // }
 
     eventDown(e) {
         this.player.keyDown(e);        
@@ -284,7 +302,9 @@ export default class Game {
             this.attackInterval -= 1;
             this.totalAttacks.push(new Attack(this.player.x + 30, this.player.y+20));
             this.maxBullet -= 1;
+            // this.attackSound.volume = 0;
             this.attackSound.cloneNode(true).play();
+            
             if (this.attackInterval === 0) { 
                 let that = this;
                 setTimeout(function(){
@@ -313,7 +333,6 @@ export default class Game {
             // this.winSound.play();
             this.lose();
         };
-        
         this.ctx.fillStyle = "gold";
         this.ctx.font = "30px Dancing Script";
         this.ctx.fillText("Score: " + this.score, 20, 40);
