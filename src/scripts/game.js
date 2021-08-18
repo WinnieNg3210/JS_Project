@@ -53,19 +53,13 @@ export default class Game {
 
     intro() {
         if (this.frameInterval <= 1) {
-            this.ctx.fillStyle = "gold";
-            this.ctx.font = "30px Dancing Script";
-            this.ctx.fillText("Score: " + this.score, 20, 40);
-            this.ctx.fillText("Life Left: " + this.health, 20, 80);
-            this.ctx.fillText("Attacks Left: " + this.maxBullet, 200, 80);
-
             this.ctx.fillStyle = "pink";
             this.ctx.font = "35px Dancing Script";
-            this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 85, 170);
-            this.ctx.fillText("This time the evil Queen will be taking actions", 100, 220);
-            this.ctx.fillText("and she has set her sight on Tokyo! Help our heroine", 80, 270);
-            this.ctx.fillText("defeat her once and for all.", 230, 320);
-            this.ctx.fillText("Press Enter to Play", 270, 420);
+            // this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 85, 170);
+            // this.ctx.fillText("This time the evil Queen will be taking actions", 100, 220);
+            // this.ctx.fillText("and she has set her sight on Tokyo! Help our heroine", 80, 270);
+            // this.ctx.fillText("defeat her once and for all.", 230, 320);
+            this.ctx.fillText("Press Enter to Play", 270, 250);
         }
     }
 
