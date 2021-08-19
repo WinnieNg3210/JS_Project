@@ -1,4 +1,4 @@
-# **Defender of Beauty & Justice**
+# **Moon Power**
 
 ## **Background**
 
