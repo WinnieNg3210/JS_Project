@@ -16,7 +16,7 @@ export default class Game {
         this.gameOver = false;
         this.totalAttacks = [];
         this.attackInterval = 1;
-        this.maxBullet = 5;
+        this.maxBullet = 3;
         this.level1 = 1000;
         this.level2 = 2000;
         this.level3 = 3000;
@@ -36,33 +36,51 @@ export default class Game {
         // will be used to handle the start and stop function
         this.gameStart = false;
 
-        // soundEffects:
-        // this.attackSound = new Audio("src/sounds/attack.mp3");
-        // this.attackSound.volume = .2;
-        // this.soundOn = false;
+        // // soundEffects:
+        // this.attackSound = new Sound(AttackSound);
+        // this.attackSound.setVolume(0.2);
+        // // this.attackSound.volume = 0.0;
+        // // this.soundOn = false;
+        // this.destroySound = new Sound(DestroySound);
+        // this.winSound = new Sound(WinSound);
 
-        // this.winSound = new Audio("src/sounds/winS.mp3");
+        // soundEffects with cloneNode
+        this.attackSound1 = new Audio("src/sounds/attack.mp3");
+        this.attackSound2 = new Audio("src/sounds/attack.mp3");
+        this.attackSound3 = new Audio("src/sounds/attack.mp3");
+        this.destroySound = new Audio("src/sounds/destroy.mp3");
+        this.winSound = new Audio("src/sounds/win.mp3");
+        this.loseSound = new Audio("src/sounds/lose.mp3");
+        this.soundCycle = 1;
+        this.attackSound1.volume = 0.5;
+        this.attackSound2.volume = 0.5;
+        this.attackSound3.volume = 0.5;
+        this.destroySound.volume = 0.5;
+        this.winSound.volume = 0.5;
+        this.loseSound.volume = 0.5;
+
         
         // this.playWin = false;
         // this.winAudio();
+        this.soundOn = true;
 
         this.handleEvents();
         this.play();
-        // this.intro();
+        this.intro();
         
     };
 
-    // intro() {
-    //     if (this.frameInterval <= 1) {
-    //         this.ctx.fillStyle = "pink";
-    //         this.ctx.font = "35px Dancing Script";
-    //         // this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 85, 170);
-    //         // this.ctx.fillText("This time the evil Queen will be taking actions", 100, 220);
-    //         // this.ctx.fillText("and she has set her sight on Tokyo! Help our heroine", 80, 270);
-    //         // this.ctx.fillText("defeat her once and for all.", 230, 320);
-    //         this.ctx.fillText("Press Enter to Play", 270, 250);
-    //     }
-    // }
+    intro() {
+        if (this.frameInterval <= 1) {
+            this.ctx.fillStyle = "pink";
+            this.ctx.font = "30px Dancing Script";
+            this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 70, 170);
+            this.ctx.fillText("This time the evil Queen will be taking actions", 70, 220);
+            this.ctx.fillText("and she has set her sight on Tokyo! Help our heroine", 70, 270);
+            this.ctx.fillText("defeat her once and for all.", 70, 320);
+            this.ctx.fillText("Press Enter to Play", 70, 400);
+        }
+    }
 
     play() {
         this.animate()
@@ -90,7 +108,7 @@ export default class Game {
         window.addEventListener("keyup", this.eventUp.bind(this));
         window.addEventListener("keypress", this.startGame.bind(this));
         window.addEventListener("keypress", this.resetGame.bind(this));
-        // window.addEventListener("keypress", this.soundStatus.bind(this));
+        window.addEventListener("keypress", this.soundStatus.bind(this));
     }
  
 
@@ -133,13 +151,27 @@ export default class Game {
         };
     };
 
-    // soundStatus(e) {
-    //     if (e.key === "m") {
-    //         // if (this.soundOn) this.soundOn = false;
-    //         // this.soundOn = true;
-    //         console.log("press m");
-    //     };
-    // }
+    soundStatus(e) {
+        if (e.key === "m") {
+            if (this.soundOn) {
+                this.soundOn = false 
+                this.attackSound1.volume = 0.0;
+                this.attackSound2.volume = 0.0;
+                this.attackSound3.volume = 0.0;
+                this.destroySound.volume = 0.0;
+                this.winSound.volume = 0.0;
+                this.loseSound.volume = 0.0;
+            } else {
+                this.soundOn = true;
+                this.attackSound1.volume = 0.5;
+                this.attackSound2.volume = 0.5;
+                this.attackSound3.volume = 0.5;
+                this.destroySound.volume = 0.5;
+                this.winSound.volume = 0.5;
+                this.loseSound.volume = 0.5;
+            }
+        };
+    }
 
     eventDown(e) {
         this.player.keyDown(e);        
@@ -186,6 +218,11 @@ export default class Game {
             // console.log(this.enemies[i].x)
 
             if (this.enemies[i].lifePoints <= 0) {
+                if(this.soundOn) {
+                    // this.destroySound.volume = 0.2;
+                    this.destroySound.play();
+                    // this.destroySound.cloneNode(true).play();
+                }
                 let addedScore = this.enemies[i].maxHealth;
                 this.score += addedScore;
                 this.enemies.splice(i, 1);
@@ -228,6 +265,7 @@ export default class Game {
             this.boss[i].update(this.frameInterval);
             this.boss[i].draw(this.ctx);
             if (this.boss[i].lifePoints <= 0) {
+                if (this.soundOn) this.destroySound.cloneNode(true).play();
                 let addedScore = this.boss[i].maxHealth;
                 this.score += addedScore;
                 this.boss.splice(i, 1)
@@ -298,7 +336,25 @@ export default class Game {
             this.totalAttacks.push(new Attack(this.player.x + 30, this.player.y+20));
             this.maxBullet -= 1;
             // this.attackSound.volume = 0;
-            // this.attackSound.cloneNode(true).play();
+            if(this.soundOn) {
+                // this.attackSound.cloneNode(true).volume = 0.0;
+                // this.attackSound.cloneNode(true).play();
+                // this.attackSound.volume = 0.5;
+                // this.attackSound.play();
+
+                if (this.soundCycle === 1) {
+                    this.attackSound1.play();
+                    this.soundCycle++;
+                } else if (this.soundCycle === 2) {
+                    this.attackSound2.play();
+                    this.soundCycle++;
+                } else if (this.soundCycle === 3) {
+                    // console.log("does it play?");
+                    this.attackSound3.play();
+                    this.soundCycle = 1;
+                };
+
+            }
             
             if (this.attackInterval === 0) { 
                 let that = this;
@@ -317,14 +373,14 @@ export default class Game {
     // };
 
     handleGameStatus() {
-        if (this.frameInterval <= 1) {
-            this.ctx.fillStyle = "pink";
-            this.ctx.font = "35px Dancing Script";
-            this.ctx.fillText("Oh no! Queen Beryl wants revenge on Sailormoon.", 55, 170);
-            this.ctx.fillText("This time the evil Queen will be taking actions", 55, 220);
-            this.ctx.fillText("and she has set her sight on Tokyo! Help our", 55, 270);
-            this.ctx.fillText("heroine defeat her once and for all. Good Luck!", 55, 320);
-            this.ctx.fillText("Press Enter to Play", 55, 400);
+        if (this.soundOn) {
+            this.ctx.fillStyle = "gold";
+            this.ctx.font = "30px Dancing Script";
+            this.ctx.fillText("Sound: On (Press M to toggle)", 200, 40)
+        } else {
+            this.ctx.fillStyle = "gold";
+            this.ctx.font = "30px Dancing Script";
+            this.ctx.fillText("Sound: Off (Press M to toggle)", 200, 40)
         }
 
         if (this.bossKill <= 0 || this.health <= 0) {
@@ -332,10 +388,10 @@ export default class Game {
         };
 
         if (this.gameOver && this.bossKill <= 0) {
+            if (this.soundOn) this.winSound.play();
             this.win();
         } else if (this.gameOver && this.health <= 0) {
-            // this.playWin = true;
-            // this.winSound.play();
+            if (this.soundOn) this.loseSound.play();
             this.lose();
         };
         this.ctx.fillStyle = "gold";
@@ -368,7 +424,7 @@ export default class Game {
 
     animate() {
         this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height);
-        // this.intro();
+        this.intro();
         this.movePlayer();
         this.pauseGame();
         this.handleEnemies();

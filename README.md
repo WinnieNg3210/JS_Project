@@ -2,7 +2,7 @@
 
 ## **Background**
 
-Defender of Beauty & Justice(DBJ) is a one-player game that has a mix of functionality between Plant vs. Zombies and the classic arcade game, Alien Invasion.
+Moon Power is a one-player game that has a mix of functionality between Plant vs. Zombies and the classic arcade game, Alien Invasion.
 
 Similar to Alien Invasion, you have control of where to fire your weapon at the Aliens, or in our case the enemies.
 
@@ -10,17 +10,18 @@ At some point the difficulty level will go up where the enemies will approach yo
 
 You will have three life points, each life points indicating how many enemies went past you and in to the village. If you lose all three life points, you lose.
 
-To win, you will have to get past 3 levels and once you've defeated all the enemies you win.
+To win, you will have to defeat the Queen 3 times, who will pop up at random.
 
 ## **Functionality & MVPs**
 
-In DBJ, users will be able to:
+In the game, users will be able to:
 * Start, pause and reset the game board
 * Navigate your character with the up and down key
 * Use space bar to fire your weapon at the enemies
+* Use the 'r', 'p' and 'm' keys to reset the game, pause the game or toggle sounds, respectively.
 
 In addition, this project will include:
-* An ABOUT modal describing the background and rules of the game
+* A modal describing the background and rules of the game
 
 
 ## **Wireframes**
@@ -32,13 +33,14 @@ the future, my own website)
 * Game controls will allow the user to start, pause and reset the game
 
 
+
 ## **Technologies, Libraries, APIs**
 
 This project will be implemented with the following technologies:
 * The Canvas API to render the game board
 * Webpack and Babel to bundle and transpile the source JavaScript code
 * npm to manage project dependencies
-* HTML, CSS, JavaScript
+* HTML5, CSS, JavaScript, Canvas
 
 ## **Implementation Timeline**
 
@@ -62,7 +64,12 @@ nav links.
 
 ## **Bonus Feature**
 There are many directions this game can go. Some anticipated updates are:
-* Pick a character to exterminate the demons besides Inuyasha
+* Pick a character to exterminate the demons besides Sailormoon
 * Add a medium and hard difficulty level
 * Having the enemies move in up and down directions aside from moving to the left
 
+## **Credits**
+Assets used in the game:
+* [LinkedIn & Github icons by Icons8](https://icons8.com/icon/)
+* [Sprite Sheets by Sithjester](http://untamed.wild-refuge.net/rmxpresources.php?characters)
+* [Sailormoon SoundEffects](https://www.zedge.net/ringtone/f21edd0c-abf0-3264-9bf1-6f3d459182fa)
