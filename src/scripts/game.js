@@ -52,12 +52,12 @@ export default class Game {
         this.winSound = new Audio("src/sounds/win.mp3");
         this.loseSound = new Audio("src/sounds/lose.mp3");
         this.soundCycle = 1;
-        this.attackSound1.volume = 0.5;
-        this.attackSound2.volume = 0.5;
-        this.attackSound3.volume = 0.5;
-        this.destroySound.volume = 0.5;
-        this.winSound.volume = 0.5;
-        this.loseSound.volume = 0.5;
+        this.attackSound1.volume = 0.4;
+        this.attackSound2.volume = 0.4;
+        this.attackSound3.volume = 0.4;
+        this.destroySound.volume = 0.1;
+        this.winSound.volume = 0.2;
+        this.loseSound.volume = 0.2;
 
         
         // this.playWin = false;
@@ -163,12 +163,12 @@ export default class Game {
                 this.loseSound.volume = 0.0;
             } else {
                 this.soundOn = true;
-                this.attackSound1.volume = 0.5;
-                this.attackSound2.volume = 0.5;
-                this.attackSound3.volume = 0.5;
-                this.destroySound.volume = 0.5;
-                this.winSound.volume = 0.5;
-                this.loseSound.volume = 0.5;
+                this.attackSound1.volume = 0.4;
+                this.attackSound2.volume = 0.4;
+                this.attackSound3.volume = 0.4;
+                this.destroySound.volume = 0.1;
+                this.winSound.volume = 0.2;
+                this.loseSound.volume = 0.2;
             }
         };
     }
