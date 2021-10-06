@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Style+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 // @font-face {
 //     font-family: "sailormoon";
 //     src: url("./assets/Shardee.ttf");
@@ -10,48 +10,129 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 body {
@@ -59,102 +140,106 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-//   background-repeat: no-repeat;
+  //   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
   margin-top: 2em;
   width: 100%;
   height: 100%;
-  
 }
 
 h1 {
-    font-size: 4em;
-    padding: .5em;
+  font-size: 4em;
+  padding: 0.5em;
 }
 
 h2 {
-    font-size: 3em;
-    padding: .5em;
+  font-size: 3em;
+  padding: 0.5em;
 }
 
 .game-instructions {
-    display: flex;
-    margin-top: .5em;
-    // flex-wrap: wrap;
-    justify-content: space-evenly;
-    // border: 1px solid black;
+  display: flex;
+  margin-top: 0.5em;
+  // flex-wrap: wrap;
+  justify-content: space-evenly;
+  // border: 1px solid black;
 }
 
-.instructions-modal, .controls-modal {
-    display: none;
-    position: absolute;
-    border: thin solid rgb(211, 170, 199);
-    padding: 1em;
-    text-align: left;
-    z-index: 7;
-    background-color: rgb(211, 170, 199);
-    line-height: 2;
-    color: aliceblue;
+.instructions-modal,
+.controls-modal {
+  display: none;
+  position: absolute;
+  border: thin solid rgb(211, 170, 199);
+  padding: 1em;
+  text-align: left;
+  z-index: 7;
+  background-color: rgb(211, 170, 199);
+  line-height: 2;
+  color: black;
 }
 
 .instructions:hover .instructions-modal {
-    display: block;
+  display: block;
 }
 
 .controls:hover .controls-modal {
-    display: block;
+  display: block;
 }
 
 .gradient-text {
-    font-family: 'Style Script', cursive;;
-    background-color: transparent;
+  font-family: "Style Script", cursive;
+  background-color: transparent;
 
-    background-image: linear-gradient(180deg, rgb(205, 209, 218) 0%, #8a1a94 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
-    
+  background-image: linear-gradient(
+    180deg,
+    rgb(205, 209, 218) 0%,
+    #8a1a94 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
 #gameCanvas {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 500px;
-    background: rgb(110, 110, 194);
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 500px;
+  background: rgb(110, 110, 194);
 }
 
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
-.credit a, .social a {
-    padding: .5em 1em;
+.credit a,
+.social a {
+  padding: 0.5em 1em;
 }
 
 footer {
-    padding-top: 60vh;
+  padding-top: 60vh;
 }
 
 .enemyBox {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 1em;
 }
 
 .enemies {
-    width: 32px;
-    height: 48px;
-    overflow: hidden;
+  width: 32px;
+  height: 48px;
+  overflow: hidden;
 }
 
 .enemies img {
-    margin-top: -50px; 
+  margin-top: -50px;
 }

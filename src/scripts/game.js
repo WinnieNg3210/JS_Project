@@ -30,7 +30,7 @@ export default class Game {
         this.bossSpawn = 5;
         // this.color = "pink";
         // this.font = "35px Dancing Script";
-        this.player = new Heroine(this.dimensions)
+        // this.player = new Heroine(this.dimensions)
         this.health = 3;
 
         // will be used to handle the start and stop function
