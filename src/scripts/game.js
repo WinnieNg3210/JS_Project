@@ -24,7 +24,7 @@ export default class Game {
     this.boss = [];
     this.finalBoss = false;
     this.showBoss = 1;
-    this.bossKill = 3;
+    this.bossKill = 1;
     this.minionsKilled = 0;
     this.bossSpawn = 5;
     // this.color = "pink";
@@ -104,7 +104,7 @@ export default class Game {
     this.boss = [];
     this.finalBoss = false;
     this.showBoss = 1;
-    this.bossKill = 2;
+    this.bossKill = 1;
     this.minionsKilled = 0;
     this.player = new Heroine(this.dimensions);
     this.health = 3;
@@ -215,12 +215,6 @@ export default class Game {
       return true;
     }
   }
-
-  // handleHeroine() {
-  //     if (this.health <= 0) {
-  //         this.gameOver = true;
-  //     };
-  // };
 
   handleEnemies() {
     for (let i = 0; i < this.enemies.length; i++) {
