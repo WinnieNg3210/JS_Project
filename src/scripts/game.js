@@ -16,17 +16,17 @@ export default class Game {
     this.totalAttacks = [];
     this.attackInterval = 1;
     this.maxBullet = 3;
-    this.level1 = 200;
-    this.level2 = 400;
-    this.level3 = 600;
-    this.finalLevel = 700;
+    this.level1 = 500;
+    this.level2 = 1000;
+    this.level3 = 1500;
+    this.finalLevel = 2000;
     this.frameInterval = 0;
     this.boss = [];
     this.finalBoss = false;
     this.showBoss = 1;
     this.bossKill = 1;
     this.minionsKilled = 0;
-    this.bossSpawn = 5;
+    this.bossSpawn = 1;
     // this.color = "pink";
     // this.font = "35px Dancing Script";
     // this.player = new Heroine(this.dimensions)
@@ -35,15 +35,6 @@ export default class Game {
     // will be used to handle the start and stop function
     this.gameStart = false;
 
-    // // soundEffects:
-    // this.attackSound = new Sound(AttackSound);
-    // this.attackSound.setVolume(0.2);
-    // // this.attackSound.volume = 0.0;
-    // // this.soundOn = false;
-    // this.destroySound = new Sound(DestroySound);
-    // this.winSound = new Sound(WinSound);
-
-    // soundEffects with cloneNode
     this.attackSound1 = new Audio("src/sounds/attack.mp3");
     this.attackSound2 = new Audio("src/sounds/attack.mp3");
     this.attackSound3 = new Audio("src/sounds/attack.mp3");
@@ -231,7 +222,7 @@ export default class Game {
         let addedScore = this.enemies[i].maxHealth;
         this.score += addedScore;
         this.enemies.splice(i, 1);
-        if (this.score >= 1000) {
+        if (this.score >= 200) {
           this.minionsKilled += 1;
         }
         i--;
@@ -349,11 +340,6 @@ export default class Game {
       this.maxBullet -= 1;
       // this.attackSound.volume = 0;
       if (this.soundOn) {
-        // this.attackSound.cloneNode(true).volume = 0.0;
-        // this.attackSound.cloneNode(true).play();
-        // this.attackSound.volume = 0.5;
-        // this.attackSound.play();
-
         if (this.soundCycle === 1) {
           this.attackSound1.play();
           this.soundCycle++;
@@ -361,7 +347,6 @@ export default class Game {
           this.attackSound2.play();
           this.soundCycle++;
         } else if (this.soundCycle === 3) {
-          // console.log("does it play?");
           this.attackSound3.play();
           this.soundCycle = 1;
         }
@@ -375,12 +360,6 @@ export default class Game {
       }
     }
   }
-
-  // winAudio() {
-  //     if (this.playWin && this.gameOver) {
-  //         this.winSound.play();
-  //     };
-  // };
 
   handleGameStatus() {
     if (this.soundOn) {
