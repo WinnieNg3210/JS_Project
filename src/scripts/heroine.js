@@ -46,12 +46,15 @@ export default class Heroine {
   }
 
   keyDown(e) {
-    if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+    // if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+    if (e.key === "w" || e.key === "s") {
       e.preventDefault();
       this.keys[e.key] = true;
       this.moving = true;
     }
-    if (e.key === " ") {
+    // if (e.key === " ") {
+    // changing spacebar to enter for attack
+    if (e.key === "Enter") {
       this.keys[e.key] = true;
       this.attack = true;
     }
