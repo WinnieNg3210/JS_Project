@@ -16,10 +16,10 @@ export default class Game {
     this.totalAttacks = [];
     this.attackInterval = 1;
     this.maxBullet = 3;
-    this.level1 = 500;
-    this.level2 = 1000;
-    this.level3 = 1500;
-    this.finalLevel = 2000;
+    this.level1 = 200;
+    this.level2 = 500;
+    this.level3 = 900;
+    this.finalLevel = 1500;
     this.frameInterval = 0;
     this.boss = [];
     this.finalBoss = false;
@@ -78,7 +78,7 @@ export default class Game {
         270
       );
       this.ctx.fillText("defeat her once and for all.", 70, 320);
-      this.ctx.fillText("Press SpaceBar to Play", 70, 400);
+      this.ctx.fillText("Press Enter to Play", 70, 400);
     }
   }
 
@@ -108,23 +108,23 @@ export default class Game {
     window.addEventListener("keypress", this.startGame.bind(this));
     window.addEventListener("keypress", this.resetGame.bind(this));
     window.addEventListener("keypress", this.soundStatus.bind(this));
-    // window.addEventListener("keydown", this.preventScroll.bind(this), false);
+    window.addEventListener("keydown", this.preventScroll.bind(this), false);
   }
 
-  // preventScroll(e) {
-  //   if (
-  //     ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(
-  //       e.code
-  //     ) > -1
-  //   ) {
-  //     e.preventDefault();
-  //   }
-  // }
+  preventScroll(e) {
+    if (
+      ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(
+        e.code
+      ) > -1
+    ) {
+      e.preventDefault();
+    }
+  }
 
   startGame(e) {
     // change Enter to spacebar to start game and pause game
-    // if (e.key === "Enter") {
-    if (e.key === " ") {
+    if (e.key === "Enter") {
+      // if (e.key === " ") {
       if (!this.gameStart && this.frameInterval === 1) {
         this.gameStart = true;
         this.play();
@@ -148,7 +148,7 @@ export default class Game {
       this.ctx.font = "90px Dancing Script";
       this.ctx.fillText("Pause!", 180, 220);
       this.ctx.font = "45px Dancing Script";
-      this.ctx.fillText("Press SpaceBar to Continue", 330, 290);
+      this.ctx.fillText("Press Enter to Continue", 330, 290);
       this.ctx.fillText("Press R to Reset", 330, 350);
     }
   }
@@ -194,16 +194,16 @@ export default class Game {
 
   movePlayer() {
     if (
-      // this.player.keys["ArrowDown"] &&
-      this.player.keys["s"] &&
+      this.player.keys["ArrowDown"] &&
+      // this.player.keys["s"] &&
       this.player.y < this.dimensions.height - this.player.height
     ) {
       this.player.y += this.player.speed;
       this.player.frameY = 0;
     }
 
-    // if (this.player.keys["ArrowUp"] && this.player.y > 100) {
-    if (this.player.keys["w"] && this.player.y > 100) {
+    if (this.player.keys["ArrowUp"] && this.player.y > 100) {
+      // if (this.player.keys["w"] && this.player.y > 100) {
       this.player.y -= this.player.speed;
       this.player.frameY = 3;
     }
@@ -412,7 +412,7 @@ export default class Game {
     this.ctx.font = "45px Dancing Script";
     this.ctx.fillText("Score: " + this.score, 320, 290);
     this.ctx.font = "35px Dancing Script";
-    this.ctx.fillText("Press SpaceBar to Play Again", 240, 380);
+    this.ctx.fillText("Press Enter to Play Again", 240, 380);
   }
 
   lose() {
@@ -422,7 +422,7 @@ export default class Game {
     this.ctx.font = "45px Dancing Script";
     this.ctx.fillText("Score: " + this.score, 320, 290);
     this.ctx.font = "35px Dancing Script";
-    this.ctx.fillText("Press SpaceBar to Play Again", 240, 380);
+    this.ctx.fillText("Press Enter to Play Again", 240, 380);
   }
 
   animate() {
