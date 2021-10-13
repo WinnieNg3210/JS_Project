@@ -1,6 +1,9 @@
 # **Moon Power** 
 [Live Link!](https://winnieng3210.github.io/Moon_Power/)
 
+![JSP](https://user-images.githubusercontent.com/32966351/137028073-c2ef6fa3-d894-4538-af2a-22df5f7e9e49.gif)
+
+
 ## **Background**
 
 Moon Power is a one-player game that has a mix of functionality between Plant vs. Zombies and the classic arcade game, Alien Invasion.
