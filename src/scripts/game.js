@@ -113,7 +113,7 @@ export default class Game {
 
   preventScroll(e) {
     if (
-      ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.key) > -1
+      ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1
     ) {
       e.preventDefault();
     }
