@@ -108,6 +108,7 @@ export default class Game {
     window.addEventListener("keypress", this.startGame.bind(this));
     window.addEventListener("keypress", this.resetGame.bind(this));
     window.addEventListener("keypress", this.soundStatus.bind(this));
+    // window.addEventListener("keydown", this.preventScroll.bind(this));
   }
 
   startGame(e) {
