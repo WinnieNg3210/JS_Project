@@ -66,11 +66,24 @@ nav links.
 
 * Thursday Morning: Deploy to Github pages
 
-## **Bonus Feature**
-There are many directions this game can go. Some anticipated updates are:
-* Pick a character to exterminate the demons besides Sailormoon
-* Add a medium and hard difficulty level
-* Having the enemies move in up and down directions aside from moving to the left
+## **Code Snippets**
+Detecting collision is the entire basis of the game where when two elements collide, something will happen. In this case, our enemies disappears.
+I created a simple algorithm if detecting collision between two rectangles that are axis-aligned (no rotations or any complicated shapes); it simply compares the x and y as well as the width and height of two rectangles. If there's an overlap between the rectangle, we get collision.
+
+```...javascript
+  detectCollision(first, second) {
+    if (
+      !(
+        first.x > second.x + second.width ||
+        first.x + first.width < second.x ||
+        first.y > second.y + second.height ||
+        first.y + first.height < second.y
+      )
+    ) {
+      return true;
+    }
+  }
+```
 
 ## **Credits**
 Assets used in the game:
